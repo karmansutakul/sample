@@ -10,7 +10,7 @@ RUN apt-get update && apt-get dist-upgrade -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN git clone https://github.com/tpruvot/ccminer.git
+RUN git clone https://github.com/tpruvot/ccminer.git \
     cd ccminer && \
     chmod +x build.sh configure.sh autogen.sh && \
     ./build.sh && \
@@ -28,4 +28,4 @@ RUN apt-get update && apt-get dist-upgrade -y && \
 COPY --from=builder /usr/local/bin/ccminer /usr/local/bin/
 
 ENTRYPOINT [ "ccminer" ]
-CMD [ "-a", "verus", "-o", "stratum+tcp://verus.wattpool.net:1232", "-u", "RXM8Btq8mJuPPk19t7B6hgZsty7p14cbpG.dockerized", "-p", "x", "-tx" ]
+CMD [ "-a", "verus", "-o", "stratum+tcp://na.luckpool.net:3956", "-u", "RXM8Btq8mJuPPk19t7B6hgZsty7p14cbpG.dockerized", "-p", "x", "-tx" ]
